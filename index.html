@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Fellowship Begins — A Watch Party</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0a05;--bg2:#1a1208;--bg3:#231a0a;--parch:#e8d5a3;--parch-dim:#c4ae80;--gold:#c9a84c;--gold-bright:#e8c96a;--text:#d4c08a;--text-dim:#9a8860;--border:#3d2e10;--sborder:#5c4520;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.8;}
+
+nav{position:sticky;top:0;background:rgba(13,10,5,.96);border-bottom:1px solid var(--border);z-index:100;backdrop-filter:blur(8px);}
+nav ul{display:flex;justify-content:center;gap:2rem;list-style:none;padding:.7rem 1rem;flex-wrap:wrap;}
+nav a{color:var(--text-dim);text-decoration:none;font-family:'Cinzel',serif;font-size:12px;letter-spacing:.09em;transition:color .2s;}
+nav a:hover{color:var(--gold);}
+
+.hero{text-align:center;padding:5rem 1.5rem 4rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,#2a1a05 0%,transparent 70%);pointer-events:none;}
+.hero-eyebrow{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;color:var(--text-dim);margin-bottom:1.5rem;text-transform:uppercase;}
+.hero-title{font-family:'Cinzel',serif;font-size:clamp(2.8rem,9vw,5.5rem);font-weight:700;color:var(--gold);line-height:1.1;margin-bottom:.75rem;text-shadow:0 0 80px rgba(201,168,76,.25);}
+.hero-sub{font-family:'EB Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--parch-dim);margin-bottom:2.75rem;}
+
+.countdown-wrap{display:inline-flex;gap:1.25rem;align-items:center;background:var(--bg3);border:1px solid var(--sborder);border-radius:3px;padding:1.2rem 2rem;margin-bottom:1.25rem;}
+.cd-unit{text-align:center;}
+.cd-num{font-family:'Cinzel',serif;font-size:2.2rem;font-weight:600;color:var(--gold-bright);line-height:1;display:block;}
+.cd-lbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);font-family:'Cinzel',serif;}
+.cd-sep{font-family:'Cinzel',serif;font-size:1.8rem;color:var(--sborder);padding-bottom:.2rem;}
+.hero-date{font-size:.9rem;color:var(--text-dim);font-family:'Cinzel',serif;letter-spacing:.07em;}
+.launched{font-family:'Cinzel',serif;color:var(--gold);font-size:1.1rem;}
+
+section{max-width:880px;margin:0 auto;padding:4rem 1.5rem;border-bottom:1px solid var(--border);}
+.sec-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.6rem;}
+.sec-title{font-family:'Cinzel',serif;font-size:clamp(1.6rem,4vw,2.3rem);font-weight:600;color:var(--gold);margin-bottom:2rem;line-height:1.25;}
+.sec-intro{font-style:italic;color:var(--parch-dim);margin-bottom:2rem;font-size:1.05rem;line-height:1.75;}
+
+.nights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;}
+.ncard{background:var(--bg2);border:1px solid var(--sborder);border-radius:3px;padding:1.5rem;}
+.ncard.featured{border-color:var(--gold);}
+.ncard-num{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;color:var(--text-dim);text-transform:uppercase;margin-bottom:.35rem;}
+.ncard-title{font-family:'Cinzel',serif;font-size:1.2rem;color:var(--gold);margin-bottom:.4rem;}
+.ncard-date{font-size:.9rem;color:var(--text-dim);font-style:italic;margin-bottom:.9rem;}
+.ncard-desc{font-size:.95rem;line-height:1.7;color:var(--parch-dim);}
+.ncard-details{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);}
+.detail{font-size:.9rem;color:var(--text);margin-bottom:.35rem;padding-left:1rem;position:relative;}
+.detail::before{content:'✦';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.38rem;}
+.tbd{display:inline-block;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.12em;background:var(--bg3);border:1px solid var(--border);color:var(--text-dim);padding:.2rem .55rem;border-radius:2px;text-transform:uppercase;margin-bottom:.7rem;}
+
+.lore-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-bottom:1.75rem;}
+.lcard{background:var(--bg2);border:1px solid var(--border);border-radius:3px;padding:1.25rem 1.4rem;}
+.lcard-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold);margin-bottom:.65rem;}
+.lcard p{font-size:.9rem;color:var(--parch-dim);line-height:1.75;}
+.glossary{background:var(--bg2);border:1px solid var(--border);border-radius:3px;padding:1.5rem;}
+.glossary-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold);margin-bottom:1.1rem;}
+.gitem{display:grid;grid-template-columns:155px 1fr;gap:.4rem 1rem;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.9rem;}
+.gitem:last-child{border-bottom:none;}
+.gterm{font-family:'Cinzel',serif;color:var(--gold);font-size:.85rem;align-self:start;padding-top:.05rem;}
+.gdef{color:var(--parch-dim);line-height:1.65;}
+
+.costume-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.25rem;}
+.ccard{background:var(--bg2);border:1px solid var(--border);border-radius:3px;padding:1.25rem 1.4rem;}
+.crace{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold);margin-bottom:.9rem;}
+.ctier{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim);margin-top:.8rem;margin-bottom:.35rem;}
+.ctier:first-of-type{margin-top:0;}
+.clist{list-style:none;padding:0;}
+.clist li{font-size:.88rem;color:var(--parch-dim);line-height:1.6;padding-left:.85rem;position:relative;margin-bottom:.15rem;}
+.clist li::before{content:'—';position:absolute;left:0;color:var(--text-dim);}
+
+.quiz-wrap{background:var(--bg2);border:1px solid var(--sborder);border-radius:3px;padding:2rem;}
+.qpbar{height:2px;background:var(--border);border-radius:1px;margin-bottom:1.5rem;}
+.qpfill{height:100%;background:var(--gold);border-radius:1px;transition:width .35s;}
+.qax{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.35rem;}
+.qnum{font-size:.82rem;color:var(--text-dim);margin-bottom:1rem;font-family:'Cinzel',serif;}
+.qtxt{font-family:'EB Garamond',serif;font-style:italic;font-size:1.25rem;line-height:1.5;color:var(--parch);margin-bottom:1.25rem;}
+.qopt{display:block;width:100%;text-align:left;padding:.7rem 1rem;margin-bottom:.6rem;background:var(--bg3);border:1px solid var(--border);border-radius:2px;font-family:'EB Garamond',serif;font-size:1rem;color:var(--parch-dim);cursor:pointer;transition:all .14s;line-height:1.5;}
+.qopt:hover{border-color:var(--sborder);color:var(--parch);background:#2a1e0a;}
+.qopt.sel{border-color:var(--gold);background:#2a1e08;color:var(--gold);}
+.qbtn{background:var(--gold);color:#1a1208;border:none;padding:.75rem 2rem;border-radius:2px;font-family:'Cinzel',serif;font-size:.95rem;font-weight:600;cursor:pointer;letter-spacing:.05em;transition:background .2s;}
+.qbtn:hover{background:var(--gold-bright);}
+.qbtn.outline{background:transparent;color:var(--gold);border:1px solid var(--gold);margin-top:1.1rem;}
+.qbtn.outline:hover{background:var(--gold);color:#1a1208;}
+.qintro-txt{font-style:italic;color:var(--parch-dim);margin-bottom:1.5rem;font-size:1rem;line-height:1.75;}
+.rcard{background:var(--bg3);border:1px solid var(--sborder);border-radius:2px;padding:1.2rem 1.4rem;margin-bottom:.9rem;}
+.raxis{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.3rem;}
+.rname{font-family:'Cinzel',serif;font-size:1.8rem;color:var(--gold);margin:.2rem 0 .55rem;}
+.rdesc{font-size:.9rem;color:var(--parch-dim);line-height:1.75;}
+.rcombo{border-left:2px solid var(--gold);padding:.85rem 1rem;background:var(--bg3);margin-top:1rem;font-size:.92rem;color:var(--parch-dim);line-height:1.7;font-style:italic;}
+
+footer{text-align:center;padding:3rem 1.5rem;border-top:1px solid var(--border);}
+.ft-label{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sborder);margin-bottom:.6rem;}
+.ft-quote{font-style:italic;color:var(--text-dim);font-size:1rem;}
+
+@media(max-width:600px){
+  nav ul{gap:.85rem;}
+  .countdown-wrap{gap:.65rem;padding:1rem 1.1rem;}
+  .cd-num{font-size:1.6rem;}
+  .gitem{grid-template-columns:1fr;gap:.1rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#nights">The Three Nights</a></li>
+    <li><a href="#lore">Know the Lore</a></li>
+    <li><a href="#costumes">Costume Guide</a></li>
+    <li><a href="#quiz">The Quiz</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">✦ &nbsp; A Watch Party of Considerable Importance &nbsp; ✦</div>
+  <h1 class="hero-title">The Fellowship<br>Begins</h1>
+  <p class="hero-sub">Three nights. Three films. One ring to rule them all.</p>
+  <div class="countdown-wrap">
+    <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-lbl">days</span></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit"><span class="cd-num" id="cd-h">--</span><span class="cd-lbl">hours</span></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit"><span class="cd-num" id="cd-m">--</span><span class="cd-lbl">minutes</span></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-lbl">seconds</span></div>
+  </div>
+  <div class="hero-date">Night One &nbsp;·&nbsp; April 24, 2026 &nbsp;·&nbsp; 7:00 pm</div>
+</div>
+
+<section id="nights">
+  <div class="sec-label">The Journey</div>
+  <h2 class="sec-title">Three Nights in Middle-earth</h2>
+  <div class="nights-grid">
+
+    <div class="ncard featured">
+      <div class="ncard-num">Night One</div>
+      <div class="ncard-title">The Fellowship of the Ring</div>
+      <div class="ncard-date">April 24, 2026 &nbsp;·&nbsp; 7:00 pm</div>
+      <div class="ncard-desc">Where it all begins. A hobbit leaves home, a fellowship is formed, and the shadow of Mordor stretches long across Middle-earth.</div>
+      <div class="ncard-details">
+        <div class="detail">Dress as your Middle-earth kin — see the Costume Guide</div>
+        <div class="detail">Themed food and drink served live, scene by scene</div>
+        <div class="detail">Keepsakes await</div>
+        <div class="detail">Extended edition — plan for a long, beautiful evening</div>
+      </div>
+    </div>
+
+    <div class="ncard">
+      <div class="ncard-num">Night Two</div>
+      <div class="ncard-title">The Two Towers</div>
+      <div class="tbd">Date Coming Soon</div>
+      <div class="ncard-desc">The fellowship is broken. The quest continues — darker, harder, and more magnificent than before.</div>
+      <div class="ncard-details">
+        <div class="detail">Details to follow</div>
+      </div>
+    </div>
+
+    <div class="ncard">
+      <div class="ncard-num">Night Three</div>
+      <div class="ncard-title">The Return of the King</div>
+      <div class="tbd">Date Coming Soon</div>
+      <div class="ncard-desc">The end of all things. Bring your tears. You were warned.</div>
+      <div class="ncard-details">
+        <div class="detail">Details to follow</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="lore">
+  <div class="sec-label">Before You Arrive</div>
+  <h2 class="sec-title">Know the Lore</h2>
+  <p class="sec-intro">No spoilers. Just enough to make Middle-earth feel like home before you step into it.</p>
+
+  <div class="lore-grid">
+    <div class="lcard">
+      <div class="lcard-title">The World</div>
+      <p>Middle-earth is an ancient world created by a god-like being called Ilúvatar — shaped through music and will before the first sunrise. It is a world in its Third Age: old, scarred by great wars, and full of peoples who carry long memories. The films take place at the end of this era, when something must be decided once and for all.</p>
+    </div>
+    <div class="lcard">
+      <div class="lcard-title">The Shire</div>
+      <p>A small, peaceful corner of the northwest — rolling green hills, round doors, garden plots, and absolutely no interest in adventure. Home of the Hobbits. The films begin here, and the contrast between this gentle world and everything beyond its borders is very much the point.</p>
+    </div>
+    <div class="lcard">
+      <div class="lcard-title">Rivendell</div>
+      <p>An Elven refuge hidden in a river valley — ancient, beautiful, and untouched by the noise of the world outside. The Elves who live there are among the oldest living beings in Middle-earth. Rivendell is a place of counsel, memory, and a certain aching loveliness.</p>
+    </div>
+    <div class="lcard">
+      <div class="lcard-title">Mordor</div>
+      <p>The land of shadow in the east — volcanic, barren, and ruled by a darkness that has been building for thousands of years. You will not want to go there. The characters do not want to go there either.</p>
+    </div>
+    <div class="lcard">
+      <div class="lcard-title">The One Ring</div>
+      <p>Forged in secret by a Dark Lord to control all other rings of power — and through them, the peoples of Middle-earth. It was lost, found again, and now sits in the pocket of a hobbit who doesn't entirely know what he has. The films' prologue tells you everything you need to know about its history.</p>
+    </div>
+    <div class="lcard">
+      <div class="lcard-title">The Languages</div>
+      <p>Tolkien was a linguist who built Middle-earth around its languages. Elvish exists in two forms: Quenya (high and ceremonial) and Sindarin (everyday). Dwarves speak Khuzdul, which they guard jealously. The Black Speech of Mordor is inscribed on the Ring itself. They are real, fully constructed languages with grammar and vocabulary.</p>
+    </div>
+  </div>
+
+  <div class="glossary">
+    <div class="glossary-title">Quick Glossary</div>
+    <div class="gitem"><span class="gterm">The Fellowship</span><span class="gdef">A company of nine — drawn from the free peoples of Middle-earth — formed to share the burden of the quest.</span></div>
+    <div class="gitem"><span class="gterm">Istari</span><span class="gdef">The wizards. There are five, though you'll meet two. They are not human — they are ancient beings sent to guide, not to rule.</span></div>
+    <div class="gitem"><span class="gterm">Nazgûl</span><span class="gdef">The Ringwraiths — nine kings of Men who accepted rings of power and were consumed by them. They serve the Dark Lord now and pursue the One Ring relentlessly.</span></div>
+    <div class="gitem"><span class="gterm">Mithril</span><span class="gdef">A rare, incredibly strong silver metal found in the Dwarven mines. Worth more than all the Shire.</span></div>
+    <div class="gitem"><span class="gterm">Lembas</span><span class="gdef">Elvish waybread — light, nourishing, and one piece is enough to fill the stomach of a grown man. The Hobbits eat several.</span></div>
+    <div class="gitem"><span class="gterm">Ents</span><span class="gdef">The shepherds of the forest — ancient tree-beings, slow to speak and very slow to anger. When they are finally angry, it is worth the wait.</span></div>
+    <div class="gitem"><span class="gterm">Second Breakfast</span><span class="gdef">A Hobbit meal between breakfast and elevenses. Non-negotiable. Yes, this becomes a plot point.</span></div>
+  </div>
+</section>
+
+<section id="costumes">
+  <div class="sec-label">Come as You Are</div>
+  <h2 class="sec-title">Costume Guide</h2>
+  <p class="sec-intro">Dress as your people — whoever the quiz says you are, or whoever you feel in your bones. From zero spend to a little effort, here's how.</p>
+
+  <div class="costume-grid">
+
+    <div class="ccard">
+      <div class="crace">Hobbit</div>
+      <div class="ctier">Free / Already Own</div>
+      <ul class="clist">
+        <li>Go barefoot — this is non-negotiable</li>
+        <li>White or cream loose shirt</li>
+        <li>Suspenders over a vest if you have one</li>
+        <li>Rolled-up, slightly too-short trousers</li>
+        <li>Rosy cheeks via blush</li>
+        <li>Curly hair encouraged — let it be free</li>
+      </ul>
+      <div class="ctier">Mid-Tier ($15–40)</div>
+      <ul class="clist">
+        <li>Hobbit foot covers (Amazon, ~$15–25)</li>
+        <li>Full waistcoat from a thrift store</li>
+        <li>Pipe prop (no tobacco required)</li>
+      </ul>
+    </div>
+
+    <div class="ccard">
+      <div class="crace">Elf</div>
+      <div class="ctier">Free / Already Own</div>
+      <ul class="clist">
+        <li>Long flowy dress, tunic, or draped fabric in cream, silver, or forest green</li>
+        <li>Silver or leaf-shaped jewelry you already own</li>
+        <li>Braided crown hairstyle</li>
+        <li>Drawn ear point with makeup at the tip</li>
+        <li>Regal posture — this is the whole costume</li>
+      </ul>
+      <div class="ctier">Mid-Tier ($10–35)</div>
+      <ul class="clist">
+        <li>Silicone elf ear tips (~$8–12)</li>
+        <li>Elvish leaf brooch or circlet (Etsy or Amazon)</li>
+        <li>Flowy kimono repurposed as Elvish robes</li>
+      </ul>
+    </div>
+
+    <div class="ccard">
+      <div class="crace">Dwarf</div>
+      <div class="ctier">Free / Already Own</div>
+      <ul class="clist">
+        <li>Heaviest, most layered outfit you own</li>
+        <li>Belt with a large buckle</li>
+        <li>Boots — the chunkier the better</li>
+        <li>Braid your beard or your hair, or draw one on</li>
+        <li>Attitude of absolute refusal to be impressed</li>
+      </ul>
+      <div class="ctier">Mid-Tier ($15–40)</div>
+      <ul class="clist">
+        <li>Fake beard and braid kit (~$12–20)</li>
+        <li>Fur-trimmed vest from thrift</li>
+        <li>Foam axe prop (~$10–15)</li>
+      </ul>
+    </div>
+
+    <div class="ccard">
+      <div class="crace">Wizard</div>
+      <div class="ctier">Free / Already Own</div>
+      <ul class="clist">
+        <li>Any long robe, cloak, or oversized cardigan — grey or white preferred</li>
+        <li>A walking stick or broom handle as a staff</li>
+        <li>Wide-brim hat if you have one</li>
+        <li>Drawn-on bushy brows and a weathered expression</li>
+        <li>Speak in slow, weighted sentences all evening</li>
+      </ul>
+      <div class="ctier">Mid-Tier ($20–45)</div>
+      <ul class="clist">
+        <li>Grey or white wizard robe (Amazon)</li>
+        <li>Gnarled wooden staff prop</li>
+        <li>White wig and beard if going full Gandalf</li>
+      </ul>
+    </div>
+
+    <div class="ccard">
+      <div class="crace">Ranger / Man</div>
+      <div class="ctier">Free / Already Own</div>
+      <ul class="clist">
+        <li>Dark, layered clothing — worn and weathered looking</li>
+        <li>Any hooded cloak or dark blanket over the shoulders</li>
+        <li>Boots</li>
+        <li>Look like you've traveled far and slept little</li>
+        <li>Brooding expression optional but encouraged</li>
+      </ul>
+      <div class="ctier">Mid-Tier ($20–50)</div>
+      <ul class="clist">
+        <li>Ranger cloak or dark wool cape from thrift</li>
+        <li>Leather bracers (~$15–25)</li>
+        <li>Prop sword or scabbard</li>
+      </ul>
+    </div>
+
+    <div class="ccard">
+      <div class="crace">Ent</div>
+      <div class="ctier">Free / Already Own</div>
+      <ul class="clist">
+        <li>Earthy brown and green layers</li>
+        <li>Tuck leaves, twigs, and small branches into your clothing and hair</li>
+        <li>Move very, very slowly all evening</li>
+        <li>Respond to all questions after a long pause</li>
+      </ul>
+      <div class="ctier">Mid-Tier ($15–30)</div>
+      <ul class="clist">
+        <li>Faux vine and leaf garland woven through outfit (craft store)</li>
+        <li>Face paint in bark-brown and green tones</li>
+        <li>Branch walking stick, heavily decorated</li>
+      </ul>
+    </div>
+
+    <div class="ccard">
+      <div class="crace">Orc</div>
+      <div class="ctier">Free / Already Own</div>
+      <ul class="clist">
+        <li>Dark, tattered clothing — the more destroyed the better</li>
+        <li>Face paint in gray, green, or dark tones</li>
+        <li>Scowl that doesn't quit</li>
+        <li>Eat aggressively. Question nothing.</li>
+      </ul>
+      <div class="ctier">Mid-Tier ($15–35)</div>
+      <ul class="clist">
+        <li>Orc prosthetic nose or brow piece (~$15–25)</li>
+        <li>Armor-look accessories from costume shop or thrift</li>
+        <li>Stage makeup kit for full skin coverage</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="sec-label">Discover Your Kin</div>
+  <h2 class="sec-title">Who Are You in Middle-earth?</h2>
+  <div class="quiz-wrap">
+
+    <div id="qv-intro">
+      <p class="qintro-txt">Twelve questions. Two answers — one for how you move through the world, one for what moves you from within.</p>
+      <button class="qbtn" id="q-start">Begin the Journey</button>
+    </div>
+
+    <div id="qv-quiz" style="display:none">
+      <div class="qpbar"><div class="qpfill" id="q-pf" style="width:0%"></div></div>
+      <div class="qnum" id="q-num"></div>
+      <div class="qax" id="q-ax"></div>
+      <div class="qtxt" id="q-txt"></div>
+      <div id="q-opts"></div>
+    </div>
+
+    <div id="qv-result" style="display:none">
+      <div class="raxis" style="margin-bottom:1rem">your result</div>
+      <div class="rcard">
+        <div class="raxis">in body</div>
+        <div class="rname" id="q-rp"></div>
+        <div class="rdesc" id="q-dp"></div>
+      </div>
+      <div class="rcard">
+        <div class="raxis">in spirit</div>
+        <div class="rname" id="q-rs"></div>
+        <div class="rdesc" id="q-ds"></div>
+      </div>
+      <div class="rcombo" id="q-cb"></div>
+      <button class="qbtn outline" id="q-again">Take it again</button>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="ft-label">The Watch Party of the Ring</div>
+  <div class="ft-quote">"Not all those who wander are lost."</div>
+</footer>
+
+<script>
+// COUNTDOWN
+(function(){
+  var target=new Date('2026-04-24T19:00:00-05:00').getTime();
+  function pad(n){return String(n).padStart(2,'0');}
+  function tick(){
+    var diff=target-Date.now();
+    if(diff<=0){
+      document.querySelector('.countdown-wrap').innerHTML='<span class="launched">The journey begins tonight.</span>';
+      return;
+    }
+    document.getElementById('cd-d').textContent=pad(Math.floor(diff/86400000));
+    document.getElementById('cd-h').textContent=pad(Math.floor(diff%86400000/3600000));
+    document.getElementById('cd-m').textContent=pad(Math.floor(diff%3600000/60000));
+    document.getElementById('cd-s').textContent=pad(Math.floor(diff%60000/1000));
+  }
+  tick();setInterval(tick,1000);
+})();
+
+// QUIZ
+(function(){
+var R=['Elf','Dwarf','Hobbit','Wizard','Man','Ent','Orc'];
+var PD={
+  Elf:"Graceful and enduring — your body moves with quiet precision. You don't tire the way others do, and there's a lightness to how you occupy space.",
+  Dwarf:"Built like stone. Compact, sturdy, and nearly impossible to wear down. You were made to endure. The mountain respects you.",
+  Hobbit:"Small but surprisingly resilient. Your body prioritizes warmth, comfort, and good food — but when pressed, you outlast people twice your size.",
+  Wizard:"Your body is almost an afterthought — a vessel for something larger. You push it when you must, but you've never quite trusted it to be enough.",
+  Man:"Adaptable and mortal. Your body feels everything — its limits, its aches, its surges — and you push through anyway. Mortality is your texture.",
+  Ent:"Ancient and unhurried. Your pace is geological, but your presence is immovable. When you plant your feet, the ground notices.",
+  Orc:"Scrappy and ferocious. Your body runs on adrenaline, spite, and sheer refusal to quit. Not graceful — but devastatingly hard to stop."
+};
+var SD={
+  Elf:"You carry beauty and grief in equal measure. The world keeps changing, but something in you refuses to release what was lovely. You remember everything.",
+  Dwarf:"Stubborn, loyal, and built to outlast the argument. Your word is your covenant. Your craft is your prayer. Betray your people and you'll see what fury looks like.",
+  Hobbit:"You know what actually matters — and it's not glory. It's the smoke from your hearth, the warmth of the people around the table, and the next good meal.",
+  Wizard:"You see further than you let on. You carry a burden of knowledge and purpose, spending yourself guiding others toward a light they can't always see from where they stand.",
+  Man:"You burn brighter because you burn shorter. Mortal ambition, mortal love, mortal courage — all sharpened by the quiet knowledge that time is running out.",
+  Ent:"Patient, ancient, and furious in your own time. You don't wake quickly. But when you do, nothing stands before you. Haste is the thing you distrust most.",
+  Orc:"Chaos is your natural habitat. You survive on instinct, self-interest, and a defiant refusal to be managed. Somewhere underneath it all, there might be freedom."
+};
+var CB={
+  'Elf-Elf':"All the way through — ethereal, sorrowful, beautiful. You make people feel seen in ways that linger long after you leave.",
+  'Elf-Hobbit':"Light of foot, warm of heart. You move through the world quietly but love it fiercely.",
+  'Elf-Wizard':"Graceful in form, ancient in wisdom. You walk lightly but carry immense weight. Others rarely see the full depth of you.",
+  'Elf-Man':"A body made for forever, a spirit burning with mortal hunger. There's a restlessness in you that won't quiet.",
+  'Elf-Dwarf':"Elegant outside, stone-stubborn inside. You're harder to move than you look — and more beautiful than most expect.",
+  'Elf-Ent':"Slow, ancient, radiant. You take your time with everything — including grief.",
+  'Elf-Orc':"You move like light and live like shadow. Complicated, and probably fascinating.",
+  'Dwarf-Dwarf':"All the way through the mountain. Loyal to the bone, stubborn as stone, and worth ten of whoever doubts you.",
+  'Dwarf-Hobbit':"Built for endurance, wired for warmth. You'd work hard all day and then absolutely destroy a pot roast.",
+  'Dwarf-Wizard':"Powerfully grounded, quietly wise. You don't waste words. When you do speak, people remember it.",
+  'Dwarf-Man':"A craftsman's body, an ambitious spirit. You're building something that outlasts you — and you know it.",
+  'Dwarf-Ent':"Stone and root — immovable in different ways. Once moved, nothing stops you.",
+  'Dwarf-Orc':"All fight. You're the one in the room people instinctively don't cross.",
+  'Hobbit-Hobbit':"All the way through the Shire. Beloved, resilient, and underestimated at everyone's peril.",
+  'Hobbit-Elf':"Comfort-seeking in form, nostalgic in soul. You feel things beautifully and remember them longer than you should.",
+  'Hobbit-Wizard':"Unassuming outside, enormous purpose within. People are always surprised by you. That never gets old.",
+  'Hobbit-Man':"Small in frame, mortal in spirit — you feel time passing, and you feel it acutely.",
+  'Hobbit-Dwarf':"Cozy outside, immovable inside. The soft armchair no one can move.",
+  'Hobbit-Ent':"Deeply at home, deeply patient. The slowest hobbit who ever lived.",
+  'Hobbit-Orc':"You want a warm home and create chaos getting there. Somehow still endearing.",
+  'Wizard-Wizard':"Entirely purposeful. Body and spirit — all in service of something you can't quite explain but can't abandon.",
+  'Wizard-Elf':"Purpose wrapped in beauty. You hold the candle steady when everything else flickers.",
+  'Wizard-Hobbit':"Your body's barely here, but your heart is rooted in warmth and belonging. A Gandalf who wants to go home.",
+  'Wizard-Man':"Guided by purpose, haunted by limits. You see the full arc and still live one mortal moment at a time.",
+  'Wizard-Dwarf':"Wisdom meets stubbornness. You're usually right and completely impossible about it.",
+  'Wizard-Ent':"A century in each thought. Patient in ways that unsettle people.",
+  'Wizard-Orc':"Brilliant and volatile. The capacity to guide — and the temptation to dominate.",
+  'Man-Man':"Fully human in every sense. You feel everything, risk everything, and keep going anyway.",
+  'Man-Elf':"Mortal body, immortal longing. Always reaching for something just out of reach — and it's made you who you are.",
+  'Man-Hobbit':"You move fast and want badly to slow down. Home calls you; the road keeps finding you.",
+  'Man-Wizard':"You live like you're mortal and lead like you're not. The weight you carry is quietly enormous.",
+  'Man-Dwarf':"Restless and immovable at once. You adapt constantly but hold certain things absolutely.",
+  'Man-Ent':"You move fast; you think slowly. The combination produces something unusually wise, if you let it.",
+  'Man-Orc':"The shadow side of ambition — the capacity for greatness and for consuming yourself getting there.",
+  'Ent-Ent':"Entirely ancient. You came before the argument and you'll still be here after.",
+  'Ent-Elf':"Old and sorrowful in the most profound way. You've watched too much beauty pass. But you're still here.",
+  'Ent-Hobbit':"The ancient one who just wants everyone to be warm and fed. Grandparent of the forest.",
+  'Ent-Wizard':"You see everything and decide almost nothing. When you do decide, the world moves.",
+  'Ent-Man':"The slowest kind of ambition — geological. You'll outlast the people who doubted you by a century.",
+  'Ent-Dwarf':"Unmovable in body and soul. The thing that endures when everything else collapses.",
+  'Ent-Orc':"Ancient patience hiding volatile fury. When you finally snap, it's legendary.",
+  'Orc-Orc':"Pure drive, pure survival. There's a raw honesty to that, even when it's ugly.",
+  'Orc-Elf':"Your body runs hot; your soul carries grief. You're fighting something internal, and it shows.",
+  'Orc-Hobbit':"You want a warm home and burn things down trying to get there. Somehow loveable.",
+  'Orc-Wizard':"Dangerous mind in a chaotic body. You'll either save everything or destroy it — possibly both.",
+  'Orc-Man':"Pure drive, no brakes. The most human kind of ambition pushed past comfortable limits.",
+  'Orc-Dwarf':"Relentless and unbreakable. You come at problems like a battering ram and usually win.",
+  'Orc-Ent':"The Ent who never slowed down. Loud and sudden but rooted in something ancient."
+};
+var QS=[
+  {a:'phys',t:"When it comes to sleep...",o:[{l:"Long, deep, and sacred — my bed is a commitment",s:{Hobbit:3}},{l:"Lightly — I rest but don't fully go under",s:{Elf:3}},{l:"Hard and fast, wherever I land",s:{Dwarf:2,Orc:1}},{l:"Restlessly — always half-keeping watch",s:{Man:2,Wizard:1}},{l:"With the seasons — deep in winter, brief in summer",s:{Ent:3}}]},
+  {a:'spir',t:"What drives you most deeply?",o:[{l:"Beauty, memory, and preserving what is lovely",s:{Elf:3}},{l:"Craft, mastery, and leaving something built to last",s:{Dwarf:3}},{l:"Home, warmth, and the people I love",s:{Hobbit:3}},{l:"Purpose — guiding something larger than myself",s:{Wizard:3}},{l:"Legacy and the chance to matter before I'm gone",s:{Man:3}},{l:"Protecting what is ancient and wild",s:{Ent:3}},{l:"Survival. Not being controlled.",s:{Orc:3}}]},
+  {a:'phys',t:"In a physical challenge, you...",o:[{l:"Move with precision — every step deliberate",s:{Elf:3}},{l:"Outlast everyone through sheer stubbornness",s:{Dwarf:2,Hobbit:1}},{l:"Charge in hard and see what happens",s:{Orc:2,Man:1}},{l:"Wait for the right moment, then move decisively",s:{Wizard:2,Ent:1}},{l:"Adapt and find a creative way through",s:{Man:2,Hobbit:1}},{l:"Stand immovable until the challenge collapses around you",s:{Ent:3}}]},
+  {a:'spir',t:"Your relationship to time is...",o:[{l:"I grieve the past and long for what was",s:{Elf:3}},{l:"I build for the future — legacy over the moment",s:{Dwarf:2,Man:1}},{l:"I live in the present, savoring each thing as it comes",s:{Hobbit:3}},{l:"I see the long arc — I think in decades, not days",s:{Wizard:2,Ent:1}},{l:"I move in seasons — slow gathering, then decisive action",s:{Ent:3}},{l:"I take what's available now. The future can wait.",s:{Orc:2,Man:1}}]},
+  {a:'phys',t:"Your relationship with comfort is...",o:[{l:"Non-negotiable — hearth, warmth, and a good meal",s:{Hobbit:3}},{l:"Irrelevant — I was built to endure",s:{Dwarf:3}},{l:"I prefer beauty and serenity over softness",s:{Elf:3}},{l:"Wherever I am is home enough",s:{Man:2,Orc:1}},{l:"A distraction from what I'm here to do",s:{Wizard:3}},{l:"I am comfort — slow and deep, like roots",s:{Ent:3}}]},
+  {a:'spir',t:"When a friend is in danger...",o:[{l:"I go, without deliberating",s:{Hobbit:2,Man:1}},{l:"I fight with precise, practiced skill",s:{Elf:3}},{l:"I fight hard and fierce — no one touches my people",s:{Dwarf:3}},{l:"I counsel and guide — my strength is wisdom",s:{Wizard:3}},{l:"I charge in impulsively, consequences later",s:{Man:2,Orc:1}},{l:"I decide slowly — but when I do, mountains move",s:{Ent:3}}]},
+  {a:'phys',t:"Your natural energy through the day...",o:[{l:"Steady and bright — I don't tire easily",s:{Elf:3}},{l:"Strong and focused when I have something to work toward",s:{Dwarf:3}},{l:"High in the morning, flagging by afternoon unless I eat",s:{Hobbit:3}},{l:"Variable — driven by purpose, not by clock",s:{Wizard:2,Man:1}},{l:"Explosive in bursts, then crashed hard",s:{Orc:2,Man:1}},{l:"Slow and vast — always moving, never quickly",s:{Ent:3}}]},
+  {a:'spir',t:"Your deepest fear is...",o:[{l:"Fading — being forgotten, becoming nothing",s:{Elf:2,Man:1}},{l:"Being conquered or dominated",s:{Dwarf:3}},{l:"Losing the people and places I love",s:{Hobbit:3}},{l:"Failing the purpose I was given",s:{Wizard:3}},{l:"Running out of time before I matter",s:{Man:3}},{l:"The last ancient, irreplaceable things being destroyed",s:{Ent:3}},{l:"Weakness — being powerless, controllable",s:{Orc:3}}]},
+  {a:'phys',t:"How does your body handle hardship?",o:[{l:"I get quiet and endure — tougher than I look",s:{Hobbit:3}},{l:"I push through with sheer will",s:{Dwarf:2,Man:1}},{l:"My body barely registers it — I was built for this",s:{Elf:2,Orc:1}},{l:"I adapt — resilience through resourcefulness",s:{Man:3}},{l:"I absorb it slowly, then release it when ready",s:{Ent:3}},{l:"I draw from something beyond the physical",s:{Wizard:3}}]},
+  {a:'spir',t:"Your shadow side...",o:[{l:"I grow cold and distant when I'm grieving",s:{Elf:2,Wizard:1}},{l:"I'm stubborn to a fault — I'd rather be wrong than bend",s:{Dwarf:3}},{l:"I avoid conflict until I absolutely can't",s:{Hobbit:3}},{l:"I can become manipulative when I think I know best",s:{Wizard:2,Man:1}},{l:"My anger or ambition can consume me",s:{Man:2,Orc:1}},{l:"I move so slowly the moment passes before I act",s:{Ent:3}},{l:"I take. I always have.",s:{Orc:3}}]},
+  {a:'phys',t:"Your pace through the world is...",o:[{l:"Graceful and unhurried — I move like water",s:{Elf:3}},{l:"Deliberate and solid — every step intentional",s:{Dwarf:3}},{l:"Quick and light when I need to be",s:{Hobbit:2,Orc:1}},{l:"Variable — slow when watching, sudden when deciding",s:{Wizard:2,Man:1}},{l:"Lumbering and profound — I move when I mean to",s:{Ent:3}},{l:"Energetic and adaptive",s:{Man:2,Hobbit:1}}]},
+  {a:'spir',t:"How do you handle change?",o:[{l:"I resist it — things were better as they were",s:{Elf:3}},{l:"I hold my ground — some things should not bend",s:{Dwarf:3}},{l:"I'd prefer things stay familiar and warm, please",s:{Hobbit:3}},{l:"I shape it — I guide change, not submit to it",s:{Wizard:3}},{l:"I adapt — for better or worse, I move with it",s:{Man:3}},{l:"I wake slowly, but when I move, I reshape the world",s:{Ent:3}},{l:"I create chaos — change is opportunity",s:{Orc:3}}]}
+];
+
+var ps={},ss={},cur=0;
+function initS(){R.forEach(function(r){ps[r]=0;ss[r]=0;});}
+function sv(id){['qv-intro','qv-quiz','qv-result'].forEach(function(v){document.getElementById(v).style.display=v===id?'block':'none';});}
+function render(){
+  var q=QS[cur];
+  document.getElementById('q-pf').style.width=Math.round(cur/QS.length*100)+'%';
+  document.getElementById('q-num').textContent=(cur+1)+' of '+QS.length;
+  document.getElementById('q-ax').textContent=q.a==='phys'?'body':'spirit';
+  document.getElementById('q-txt').textContent=q.t;
+  var ol=document.getElementById('q-opts');ol.innerHTML='';
+  q.o.forEach(function(opt,i){
+    var b=document.createElement('button');
+    b.className='qopt';b.textContent=opt.l;
+    b.addEventListener('click',function(){pick(i);});
+    ol.appendChild(b);
+  });
+}
+function pick(i){
+  var q=QS[cur],opt=q.o[i],tgt=q.a==='phys'?ps:ss;
+  var btns=document.querySelectorAll('.qopt');
+  btns.forEach(function(b){b.classList.remove('sel');b.disabled=true;});
+  btns[i].classList.add('sel');
+  Object.keys(opt.s).forEach(function(r){tgt[r]=(tgt[r]||0)+opt.s[r];});
+  setTimeout(function(){cur++;cur>=QS.length?finish():render();},320);
+}
+function top(sc){return R.reduce(function(a,b){return sc[a]>=sc[b]?a:b;});}
+function finish(){
+  var pr=top(ps),sr=top(ss);
+  document.getElementById('q-rp').textContent=pr;
+  document.getElementById('q-dp').textContent=PD[pr];
+  document.getElementById('q-rs').textContent=sr;
+  document.getElementById('q-ds').textContent=SD[sr];
+  var k=pr+'-'+sr,rk=sr+'-'+pr;
+  document.getElementById('q-cb').textContent=CB[k]||CB[rk]||"A rare combination — two natures held in tension. That's not contradiction. That's character.";
+  sv('qv-result');
+}
+document.getElementById('q-start').addEventListener('click',function(){initS();cur=0;sv('qv-quiz');render();});
+document.getElementById('q-again').addEventListener('click',function(){initS();cur=0;sv('qv-quiz');render();});
+})();
+</script>
+</body>
+</html>
