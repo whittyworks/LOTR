@@ -6,25 +6,25 @@
 <title>The Fellowship Begins — A Watch Party</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0d0a05;--bg2:#1a1208;--bg3:#231a0a;--parch:#e8d5a3;--parch-dim:#c4ae80;--gold:#c9a84c;--gold-bright:#e8c96a;--text:#d4c08a;--text-dim:#9a8860;--border:#3d2e10;--sborder:#5c4520;}
+:root{--bg:#f5e6c8;--bg2:#ede0c0;--bg3:#e4d4ad;--parch:#2a1a05;--parch-dim:#5c3d18;--gold:#8a5c10;--gold-bright:#a06e18;--text:#2a1a05;--text-dim:#7a5830;--border:#c9a87a;--sborder:#a07840;}
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.8;}
 
-nav{position:sticky;top:0;background:rgba(13,10,5,.96);border-bottom:1px solid var(--border);z-index:100;backdrop-filter:blur(8px);}
+nav{position:sticky;top:0;background:rgba(245,230,200,.97);border-bottom:1px solid var(--border);z-index:100;backdrop-filter:blur(8px);}
 nav ul{display:flex;justify-content:center;gap:2rem;list-style:none;padding:.7rem 1rem;flex-wrap:wrap;}
 nav a{color:var(--text-dim);text-decoration:none;font-family:'Cinzel',serif;font-size:12px;letter-spacing:.09em;transition:color .2s;}
 nav a:hover{color:var(--gold);}
 
 .hero{text-align:center;padding:5rem 1.5rem 4rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,#2a1a05 0%,transparent 70%);pointer-events:none;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,#e8d4a8 0%,transparent 70%);pointer-events:none;}
 .hero-eyebrow{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;color:var(--text-dim);margin-bottom:1.5rem;text-transform:uppercase;}
-.hero-title{font-family:'Cinzel',serif;font-size:clamp(2.8rem,9vw,5.5rem);font-weight:700;color:var(--gold);line-height:1.1;margin-bottom:.75rem;text-shadow:0 0 80px rgba(201,168,76,.25);}
+.hero-title{font-family:'Cinzel',serif;font-size:clamp(2.8rem,9vw,5.5rem);font-weight:700;color:var(--gold);line-height:1.1;margin-bottom:.75rem;text-shadow:0 2px 12px rgba(100,60,0,.12);}
 .hero-sub{font-family:'EB Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--parch-dim);margin-bottom:2.75rem;}
 
 .countdown-wrap{display:inline-flex;gap:1.25rem;align-items:center;background:var(--bg3);border:1px solid var(--sborder);border-radius:3px;padding:1.2rem 2rem;margin-bottom:1.25rem;}
 .cd-unit{text-align:center;}
-.cd-num{font-family:'Cinzel',serif;font-size:2.2rem;font-weight:600;color:var(--gold-bright);line-height:1;display:block;}
+.cd-num{font-family:'Cinzel',serif;font-size:2.2rem;font-weight:600;color:var(--gold);line-height:1;display:block;}
 .cd-lbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);font-family:'Cinzel',serif;}
 .cd-sep{font-family:'Cinzel',serif;font-size:1.8rem;color:var(--sborder);padding-bottom:.2rem;}
 .hero-date{font-size:.9rem;color:var(--text-dim);font-family:'Cinzel',serif;letter-spacing:.07em;}
@@ -74,12 +74,12 @@ section{max-width:880px;margin:0 auto;padding:4rem 1.5rem;border-bottom:1px soli
 .qnum{font-size:.82rem;color:var(--text-dim);margin-bottom:1rem;font-family:'Cinzel',serif;}
 .qtxt{font-family:'EB Garamond',serif;font-style:italic;font-size:1.25rem;line-height:1.5;color:var(--parch);margin-bottom:1.25rem;}
 .qopt{display:block;width:100%;text-align:left;padding:.7rem 1rem;margin-bottom:.6rem;background:var(--bg3);border:1px solid var(--border);border-radius:2px;font-family:'EB Garamond',serif;font-size:1rem;color:var(--parch-dim);cursor:pointer;transition:all .14s;line-height:1.5;}
-.qopt:hover{border-color:var(--sborder);color:var(--parch);background:#2a1e0a;}
-.qopt.sel{border-color:var(--gold);background:#2a1e08;color:var(--gold);}
-.qbtn{background:var(--gold);color:#1a1208;border:none;padding:.75rem 2rem;border-radius:2px;font-family:'Cinzel',serif;font-size:.95rem;font-weight:600;cursor:pointer;letter-spacing:.05em;transition:background .2s;}
+.qopt:hover{border-color:var(--sborder);color:var(--parch);background:#ddc99a;}
+.qopt.sel{border-color:var(--gold);background:#d4b87a;color:#2a1a05;}
+.qbtn{background:var(--gold);color:#f5e6c8;border:none;padding:.75rem 2rem;border-radius:2px;font-family:'Cinzel',serif;font-size:.95rem;font-weight:600;cursor:pointer;letter-spacing:.05em;transition:background .2s;}
 .qbtn:hover{background:var(--gold-bright);}
 .qbtn.outline{background:transparent;color:var(--gold);border:1px solid var(--gold);margin-top:1.1rem;}
-.qbtn.outline:hover{background:var(--gold);color:#1a1208;}
+.qbtn.outline:hover{background:var(--gold);color:#f5e6c8;}
 .qintro-txt{font-style:italic;color:var(--parch-dim);margin-bottom:1.5rem;font-size:1rem;line-height:1.75;}
 .rcard{background:var(--bg3);border:1px solid var(--sborder);border-radius:2px;padding:1.2rem 1.4rem;margin-bottom:.9rem;}
 .raxis{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.3rem;}
@@ -88,7 +88,7 @@ section{max-width:880px;margin:0 auto;padding:4rem 1.5rem;border-bottom:1px soli
 .rcombo{border-left:2px solid var(--gold);padding:.85rem 1rem;background:var(--bg3);margin-top:1rem;font-size:.92rem;color:var(--parch-dim);line-height:1.7;font-style:italic;}
 
 footer{text-align:center;padding:3rem 1.5rem;border-top:1px solid var(--border);}
-.ft-label{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sborder);margin-bottom:.6rem;}
+.ft-label{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.6rem;}
 .ft-quote{font-style:italic;color:var(--text-dim);font-size:1rem;}
 
 @media(max-width:600px){
